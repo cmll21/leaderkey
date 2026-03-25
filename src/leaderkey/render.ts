@@ -130,7 +130,7 @@ export function renderBinding(
     type: "text",
     text: strHeader,
     foreground: "command",
-    background: "header",
+    background: "selection",
   };
   const background: Decoration = {
     type: "background",

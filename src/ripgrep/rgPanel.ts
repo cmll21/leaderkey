@@ -398,7 +398,7 @@ export class RgPanel {
       selectedBg.push({
         type: "background",
         lines: 1,
-        background: "header",
+        background: "selection",
         zOffset: 1,
         lineOffset: selection - renderedLines.start + HEADER_NUM_LINES,
       });

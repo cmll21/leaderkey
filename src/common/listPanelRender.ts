@@ -87,7 +87,7 @@ export function renderListPanel(
     const lineOffset = selectedRow === -1 ? 1 : selectedRow + 2;
     decos.push({
       type: "background",
-      background: "header",
+      background: "selection",
       lines: 1,
       lineOffset,
       zOffset: 1,
@@ -124,12 +124,8 @@ export function createFuzzyMatchLayers(
   positions: Set<number>,
   baseForeground: TextType = "command",
 ): TextLayer[] {
-  const nonHighlight = [...text]
-    .map((c, i) => (positions.has(i) ? " " : c))
-    .join("");
-  const highlight = [...text]
-    .map((c, i) => (positions.has(i) ? c : " "))
-    .join("");
+  const nonHighlight = [...text].map((c, i) => (positions.has(i) ? " " : c)).join("");
+  const highlight = [...text].map((c, i) => (positions.has(i) ? c : " ")).join("");
 
   return [
     { text: nonHighlight, foreground: baseForeground },

@@ -39,7 +39,7 @@ export function updateStickyScrollConf() {
 }
 updateStickyScrollConf();
 
-type BackgroundType = "default" | "header" | "border" | "cursor" | "gray";
+type BackgroundType = "default" | "header" | "border" | "cursor" | "gray" | "selection";
 
 export type TextType =
   | TokenType
@@ -63,6 +63,7 @@ export type ColorMode = "theme" | "classic" | "custom";
 export interface LeaderkeyColorConfig {
   background?: string;
   headerBackground?: string;
+  selectionBackground?: string;
   border?: string;
   cursor?: string;
   grayBackground?: string;
@@ -85,6 +86,7 @@ function buildThemeBgTable(): BgTable {
   return {
     default: new ThemeColor("editor.background"),
     header: new ThemeColor("titleBar.activeBackground"),
+    selection: new ThemeColor("list.activeSelectionBackground"),
     border: new ThemeColor("focusBorder"),
     cursor: new ThemeColor("editorCursor.foreground"),
     gray: new ThemeColor("editorIndentGuide.background"),
@@ -120,6 +122,7 @@ const classicDecoRenderOpts: { [T in ThemeType]: { [K in BackgroundType]: string
   dark: {
     default: "#292b2e",
     header: "#5d4d7a",
+    selection: "#4f3d6a",
     border: "#68217A",
     cursor: "#BBB",
     gray: "#88888833",
@@ -127,6 +130,7 @@ const classicDecoRenderOpts: { [T in ThemeType]: { [K in BackgroundType]: string
   light: {
     default: "#FAF7EC",
     header: "#E6E6EA",
+    selection: "#d8d7e6",
     border: "#E7E5EB",
     cursor: "#444",
     gray: "#88888833",
@@ -197,6 +201,7 @@ function buildColorTables() {
     return {
       default: user.background ?? defaults.default,
       header: user.headerBackground ?? defaults.header,
+      selection: user.selectionBackground ?? defaults.selection,
       border: user.border ?? defaults.border,
       cursor: user.cursor ?? defaults.cursor,
       gray: user.grayBackground ?? defaults.gray,
