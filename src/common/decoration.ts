@@ -39,7 +39,14 @@ export function updateStickyScrollConf() {
 }
 updateStickyScrollConf();
 
-type BackgroundType = "default" | "header" | "border" | "cursor" | "gray" | "selection";
+type BackgroundType =
+  | "default"
+  | "leaderkey"
+  | "header"
+  | "border"
+  | "cursor"
+  | "gray"
+  | "selection";
 
 export type TextType =
   | TokenType
@@ -62,6 +69,7 @@ export type ColorMode = "theme" | "classic" | "custom";
  */
 export interface LeaderkeyColorConfig {
   background?: string;
+  leaderkeyBackground?: string;
   headerBackground?: string;
   selectionBackground?: string;
   border?: string;
@@ -85,6 +93,7 @@ type TextTable = { [K in TextType]: ThemableDecorationAttachmentRenderOptions };
 function buildThemeBgTable(): BgTable {
   return {
     default: new ThemeColor("editor.background"),
+    leaderkey: new ThemeColor("editor.lineHighlightBackground"),
     header: new ThemeColor("titleBar.activeBackground"),
     selection: new ThemeColor("list.activeSelectionBackground"),
     border: new ThemeColor("focusBorder"),
@@ -121,6 +130,7 @@ function buildThemeTextTable(): TextTable {
 const classicDecoRenderOpts: { [T in ThemeType]: { [K in BackgroundType]: string } } = {
   dark: {
     default: "#292b2e",
+    leaderkey: "#313244",
     header: "#5d4d7a",
     selection: "#4f3d6a",
     border: "#68217A",
@@ -129,6 +139,7 @@ const classicDecoRenderOpts: { [T in ThemeType]: { [K in BackgroundType]: string
   },
   light: {
     default: "#FAF7EC",
+    leaderkey: "#f3f1ea",
     header: "#E6E6EA",
     selection: "#d8d7e6",
     border: "#E7E5EB",
@@ -200,6 +211,7 @@ function buildColorTables() {
   ): BgTable {
     return {
       default: user.background ?? defaults.default,
+      leaderkey: user.leaderkeyBackground ?? user.background ?? defaults.leaderkey,
       header: user.headerBackground ?? defaults.header,
       selection: user.selectionBackground ?? defaults.selection,
       border: user.border ?? defaults.border,

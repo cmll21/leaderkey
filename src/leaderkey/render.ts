@@ -134,7 +134,7 @@ export function renderBinding(
   };
   const background: Decoration = {
     type: "background",
-    background: "default",
+    background: "leaderkey",
     lines: rendered.nLines + 2,
     lineOffset: -0.5,
   };
