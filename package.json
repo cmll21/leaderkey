@@ -213,6 +213,117 @@
           "type": "boolean",
           "default": false,
           "description": "Hide the leaderkey menu until `?` is pressed."
+        },
+        "leaderkey.colorMode": {
+          "type": "string",
+          "enum": [
+            "theme",
+            "classic",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "Automatically matches your active VS Code theme using ThemeColor tokens (terminal.ansiMagenta, terminal.ansiGreen, editor.background, etc.)",
+            "Original Spacemacs-inspired palette (hardcoded purple/teal/blue)",
+            "Fully manual — specify hex colors in leaderkey.colors.dark and leaderkey.colors.light"
+          ],
+          "default": "theme",
+          "description": "How leaderkey chooses its UI colors."
+        },
+        "leaderkey.colors.dark": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "background": {
+              "type": "string",
+              "description": "Main panel background color (CSS hex, e.g. '#1e1e2e')"
+            },
+            "headerBackground": {
+              "type": "string",
+              "description": "Header bar background color"
+            },
+            "border": {
+              "type": "string",
+              "description": "Border / accent color"
+            },
+            "cursor": {
+              "type": "string",
+              "description": "Cursor indicator color"
+            },
+            "grayBackground": {
+              "type": "string",
+              "description": "Dimmed / gray background color (include alpha if desired, e.g. '#88888833')"
+            },
+            "key": {
+              "type": "string",
+              "description": "Color for key labels (e.g. 'b', 'f')"
+            },
+            "dir": {
+              "type": "string",
+              "description": "Color for submenu / directory entries"
+            },
+            "arrow": {
+              "type": "string",
+              "description": "Color for the → separator arrow"
+            },
+            "binding": {
+              "type": "string",
+              "description": "Color for binding (submenu) name text"
+            },
+            "command": {
+              "type": "string",
+              "description": "Color for command name text"
+            }
+          },
+          "default": {},
+          "description": "Leaderkey color overrides for dark themes. Omit any key to keep the Spacemacs default. Example (Catppuccin Mocha): { \"background\": \"#1e1e2e\", \"headerBackground\": \"#313244\", \"key\": \"#cba6f7\", \"arrow\": \"#a6e3a1\", \"binding\": \"#89b4fa\", \"command\": \"#cdd6f4\" }"
+        },
+        "leaderkey.colors.light": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "background": {
+              "type": "string",
+              "description": "Main panel background color (CSS hex, e.g. '#1e1e2e')"
+            },
+            "headerBackground": {
+              "type": "string",
+              "description": "Header bar background color"
+            },
+            "border": {
+              "type": "string",
+              "description": "Border / accent color"
+            },
+            "cursor": {
+              "type": "string",
+              "description": "Cursor indicator color"
+            },
+            "grayBackground": {
+              "type": "string",
+              "description": "Dimmed / gray background color (include alpha if desired, e.g. '#88888833')"
+            },
+            "key": {
+              "type": "string",
+              "description": "Color for key labels (e.g. 'b', 'f')"
+            },
+            "dir": {
+              "type": "string",
+              "description": "Color for submenu / directory entries"
+            },
+            "arrow": {
+              "type": "string",
+              "description": "Color for the → separator arrow"
+            },
+            "binding": {
+              "type": "string",
+              "description": "Color for binding (submenu) name text"
+            },
+            "command": {
+              "type": "string",
+              "description": "Color for command name text"
+            }
+          },
+          "default": {},
+          "description": "Leaderkey color overrides for light themes. Omit any key to keep the Spacemacs default."
         }
       }
     },

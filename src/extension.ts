@@ -6,7 +6,11 @@ import {
   window,
   workspace,
 } from "vscode";
-import { updateGlobalThemeType, updateStickyScrollConf } from "./common/decoration";
+import {
+  updateColorConfig,
+  updateGlobalThemeType,
+  updateStickyScrollConf,
+} from "./common/decoration";
 import { commonPrefix, init as initGlobal } from "./common/global";
 import { getDir, inferPathFromHooks, inferPathFromUri } from "./common/inferPathFromUri";
 import { ENV_HOME, init as initRemote } from "./common/remote";
@@ -319,6 +323,12 @@ export async function activate(context: ExtensionContext) {
     workspace.onDidChangeConfiguration((event) => {
       if (event.affectsConfiguration("editor.stickyScroll")) {
         updateStickyScrollConf();
+      }
+      if (
+        event.affectsConfiguration("leaderkey.colorMode") ||
+        event.affectsConfiguration("leaderkey.colors")
+      ) {
+        updateColorConfig();
       }
     }),
 
